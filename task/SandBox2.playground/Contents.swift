@@ -1,18 +1,20 @@
-//クラス準備
-class Dog{                      //いぬクラス
+//クラス（スーパークラス）準備
+//04/25 レビュー指摘修正 -> スーパークラスとなるクラス名にSuperをつける
+class SuperDog{                      //すごいいぬクラス
     var name = ""               //プロパティ「名前」
     var type = ""               //プロパティ「種類」
     var birth = ""              //プロパティ「誕生日」
     
     func bark() -> String{     //メソッド「吠える」
-        return "わんわん"
+        return "きゃんきゃん"
     }
 }
 
-//継承クラス準備
-class SuperDog: Dog {
+//継承クラス準備（サブクラス）
+//04/25 レビュー指摘修正 -> スーパークラスとなるクラス名にSuperをつける
+class Dog: SuperDog {
     override func bark() -> String {
-        return "きゃんきゃん"
+        return "わんわん"
     }
 }
 
@@ -25,28 +27,30 @@ class SuperDog: Dog {
 print("/////Ditcionaly/////\n")
 
 //Dictionaly準備
-var whatDog: [String:String] = [String:String]()
+//04/25 レビュー指摘修正 -> [String:String]の重複指定の解消
+//var whatDog: [String:String] = [String:String]()
+var whatDog = [String:String]()
 whatDog["きゃんきゃん"] = "すごいいぬ"
 whatDog["わんわん"] = "いぬ"
 
-//いぬクラス
-var Ins_dog = Dog()
+//すごいいぬクラス
+var Ins_dog = SuperDog()
 Ins_dog.bark()
 var who = Ins_dog.bark()
 print(who)
 var answer = whatDog[who]
 if let answer = answer{
-    print("わんわんと鳴いたのは：" + answer)
+    print("きゃんきゃんと鳴いたのは：" + answer)
 }
 
-//すごいいぬクラス
-var Ins_super = SuperDog()
+//いぬクラス
+var Ins_super = Dog()
 Ins_super.bark()
 var who2 = Ins_super.bark()
 print(who2)
 var answer2 = whatDog[who2]
 if let answer2 = answer2{
-    print("きゃんきゃんと鳴いたのは：" + answer2)
+    print("わんわんと鳴いたのは：" + answer2)
 }
 
 
