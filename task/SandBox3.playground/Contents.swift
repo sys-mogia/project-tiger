@@ -9,6 +9,8 @@ var ans:[String] = ["ズン", "ズン", "ズン", "ズン", "ドコ"]
 //取り出したデータ格納用
 var result = [String]()
 
+//for文でのチェック用
+var checkCount:Int = 0;
 
 //ズンドコ
 while(true){
@@ -24,22 +26,20 @@ while(true){
     
     //result配列に5つデータが入ってから比較
     if(result.count >= 5){
-        //ズン
-        if(result[result.count - 5] == ans[(result.count - result.count)]){
-            //ズン
-            if(result[result.count - 4] == ans[(result.count - (result.count - 1))]){
-                //ズン
-                if(result[result.count - 3] == ans[(result.count - (result.count - 2))]){
-                    //ズン
-                    if(result[result.count - 2] == ans[(result.count - (result.count - 3))]){
-                        //ドコ
-                        if(result[result.count - 1] == ans[(result.count - (result.count - 4))]){
-                            print("キ・ヨ・シ！！！")
-                            break
-                        }
-                    }
-                }
+        
+        checkCount = 0;
+        
+        //ズンズンズンズン
+        for i in 1...4{
+            if(result[result.count - (6 - i)] == ans[(result.count - result.count)]){
+                checkCount = checkCount + 1;
             }
+        }
+        
+        //ドコ
+        if(checkCount == 4 && result[result.count - 1] == ans[(result.count - (result.count - 4))]){
+            print("キ・ヨ・シ！！！")
+            break
         }
     }
 }
