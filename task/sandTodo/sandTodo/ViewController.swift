@@ -38,7 +38,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     //+ボタンタップ時に呼ばれる処理
     @IBAction func tapAddButton(_ sender: Any) {
         //アラートダイアログ生成
-        let alertController = UIAlertController(title: "TODO追加", message: "TODOを入力してください", preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: "ToDo追加", message: "ToDoを入力してください", preferredStyle: UIAlertControllerStyle.alert)
         //テキストエリア追加
         alertController.addTextField(configurationHandler: nil)
         
@@ -156,7 +156,7 @@ class MyToDo: NSObject, NSCoding {
     
     //NSCodingプロトコルに宣言されているデシリアライズ処理。デコード処理とも
     required init?(coder aDecoder: NSCoder) {
-        todoTitle = aDecoder.decodeObject(forKey: "todotitle") as? String
+        todoTitle = aDecoder.decodeObject(forKey: "todoTitle") as? String
         todoDone = aDecoder.decodeBool(forKey: "todoDone")
     }
     
