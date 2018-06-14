@@ -21,6 +21,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //コードでEditボタン配置
+        self.navigationItem.setLeftBarButton(self.editButtonItem, animated: true)
+        
         //保存しているToDoの読み込み処理
         let userDefaults = UserDefaults.standard
         if let storedToDoList = userDefaults.object(forKey: "todoList") as? Data{
@@ -33,6 +36,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    //Editボタン挙動
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: true)
+        self.tableView.setEditing(editing, animated: animated)
     }
     
     //+ボタンタップ時に呼ばれる処理
